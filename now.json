@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [{ "src": "*.py", "use": "@now/python" }],
   "routes": [
-    { "src": "/api/possible/([+0-9]+)(/([A-Z]{2})?", "dest":"/possible.py?N=$1&C=$3"},
-    { "src": "/api/valid/([+0-9]+)(/([A-Z]{2})?", "dest":"/valid.py?N=$1&C=$3"}
+    { "src": "/api/possible/([+0-9]+)(/([A-Z]{2}))?", "dest":"/possible.py?N=$1&C=$3"},
+    { "src": "/api/valid/([+0-9]+)(/([A-Z]{2}))?", "dest":"/valid.py?N=$1&C=$3"}
   ]
 }

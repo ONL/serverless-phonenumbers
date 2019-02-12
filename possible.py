@@ -23,6 +23,6 @@ class handler(BaseHTTPRequestHandler):
             param_country = None
         
         num = phonenumbers.parse(param_num, param_country)
-        message = phonenumbers.is_possible_number(num)
+        message = str(phonenumbers.is_possible_number(num))
         self.wfile.write(message.encode())
         return

@@ -1,0 +1,8 @@
+{
+  "version": 2,
+  "builds": [{ "src": "*.py", "use": "@now/python" }],
+  "routes": [
+    { "src": "/possible", "dest":"/possible.py"},
+    { "src": "/valid", "dest":"/valid.py"}
+  ]
+}

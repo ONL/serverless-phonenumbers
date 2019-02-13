@@ -15,7 +15,7 @@ class handler(BaseHTTPRequestHandler):
             param_country = params.get("C")
             param_type = params.get("T")
         
-        #if param_country == "None": param_country = None
+        if param_country == "None": param_country = None
         num = phonenumbers.parse(param_num, param_country)
         
         if param_type == "INT":

@@ -7,8 +7,8 @@ class handler(BaseHTTPRequestHandler):
         self.send_header('Content-type','text/plain')
         self.end_headers()
         
-        #length = int(self.headers.getheader('content-length'))
-        #field_data = self.rfile.read(length)
+        length = int(self.headers.getheader('content-length'))
+        field_data = self.rfile.read(length)
         #fields = urlparse.parse_qs(field_data)
         
         #if fields["N"] is not None:
@@ -24,6 +24,6 @@ class handler(BaseHTTPRequestHandler):
         param_country = None
         num = phonenumbers.parse(param_num, param_country)
         message = str(phonenumbers.is_valid_number(num))
-        
+        message = str(field_data)
         self.wfile.write(message.encode())
         return

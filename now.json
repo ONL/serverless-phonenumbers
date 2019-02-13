@@ -4,6 +4,7 @@
   "builds": [{ "src": "*.py", "use": "@now/python", "config": { "maxLambdaSize": "15mb" }}],
   "routes": [
     { "src": "/api/possible/([+]?[0-9]+)/([A-Z]{2})", "dest":"/possible.py?N=$1&C=$2"},
-    { "src": "/api/valid/([+]?[0-9]+)/([A-Z]{2}|None)", "dest":"/valid.py?N=$1&C=$2"}
+    { "src": "/api/valid/([+]?[0-9]+)/([A-Z]{2}|None)", "dest":"/valid.py?N=$1&C=$2"},
+    { "src": "/api/format/([+]?[0-9]+)/([A-Z]{2}|None)/(INT|NAT|E164)", "dest":"/format.py?N=$1&C=$2&T=$3"}
   ]
 }

@@ -1,6 +1,6 @@
 from http.server import BaseHTTPRequestHandler
 import phonenumbers
-import urlparse
+from urllib.parse import urlparse
 
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):

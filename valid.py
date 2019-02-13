@@ -10,7 +10,7 @@ class handler(BaseHTTPRequestHandler):
         self.end_headers()
         
         if "?" in self.path:
-            params = dict(urllib.parse.parse_qsl(self.path.split("?")[1], True))
+            params = dict(urllib.parse.parse_qsl(self.path.split("?")[1], True, True))
             param_num = params.get("N", "+12345678")
             param_country = params.get("C")
         

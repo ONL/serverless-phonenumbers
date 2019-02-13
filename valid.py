@@ -20,11 +20,10 @@ class handler(BaseHTTPRequestHandler):
         #    param_country = fields["C"]
         #else:
         #    param_country = None
-        
-        #num = phonenumbers.parse(param_num, param_country)
-        # message = str(phonenumbers.is_valid_number(num))
-        message = "True"
-        
+        param_num = "+12345678"
+        param_country = None
+        num = phonenumbers.parse(param_num, param_country)
+        message = str(phonenumbers.is_valid_number(num))
         
         self.wfile.write(message.encode())
         return

@@ -1,6 +1,6 @@
 from http.server import BaseHTTPRequestHandler
 import phonenumbers
-from urllib.parse import urlparse
+import urllib.parse
 
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):
@@ -10,7 +10,7 @@ class handler(BaseHTTPRequestHandler):
         self.end_headers()
         
         if "?" in self.path:
-            params = dict(urlparse.parse_qsl(self.path.split("?")[1], True))
+            params = dict(urllib.parse.parse_qsl(self.path.split("?")[1], True))
             param_num = params["N"]
             param_country = params["C"]
                  
@@ -31,7 +31,7 @@ class handler(BaseHTTPRequestHandler):
         
         if self.rfile:
             # print urlparse.parse_qs(self.rfile.read(int(self.headers['Content-Length'])))
-            params = dict(urlparse.parse_qs(self.rfile.read(int(self.headers['Content-Length']))))
+            params = dict(urllib.parse.parse_qs(self.rfile.read(int(self.headers['Content-Length']))))
             param_num = params["N"]
             param_country = params["C"]
         

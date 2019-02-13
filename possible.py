@@ -11,11 +11,11 @@ class handler(BaseHTTPRequestHandler):
         
         if "?" in self.path:
             params = dict(urllib.parse.parse_qsl(self.path.split("?")[1], True))
-            param_num = params["N"]
-            param_country = params["C"]
+            param_num = params.get("N","+1")
+            param_country = params.get("C")
                  
-        if param_num is None:
-            param_num = "+12345678"
+        if param_country == "xx":
+            param_country = None
         
         num = phonenumbers.parse(param_num, param_country)
         message = str(phonenumbers.is_possible_number(num))

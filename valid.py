@@ -14,9 +14,6 @@ class handler(BaseHTTPRequestHandler):
             param_num = params.get("N", "+12345678")
             param_country = params.get("C")
         
-        if params_country is "None":
-            params_country = None
-        
         num = phonenumbers.parse(param_num, param_country)
         message = str(phonenumbers.is_valid_number(num))
         

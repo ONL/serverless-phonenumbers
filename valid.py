@@ -10,14 +10,15 @@ class handler(BaseHTTPRequestHandler):
         
         length = int(self.headers.getheader('content-length'))
         field_data = self.rfile.read(length)
+        print (field_data)
         fields = urlparse.parse_qs(field_data)
         
-        if (None != fields["N"]):
+        if fields["N"] is not None:
             param_num = fields["N"]
         else:
             param_num = "+12345678"
         
-        if (None != fields["C"]):
+        if fields["C"] is not None:
             param_country = fields["C"]
         else:
             param_country = None

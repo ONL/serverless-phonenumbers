@@ -10,12 +10,10 @@ class handler(BaseHTTPRequestHandler):
         self.end_headers()
         
         if "?" in self.path:
-            for key,value in dict(urlparse.parse_qsl(self.path.split("?")[1], True)).items():
-                if key == "N":
-                    param_num = value
-                if key == "C":
-                    param_country = value
-                    
+            params = dict(urlparse.parse_qsl(self.path.split("?")[1], True))
+            param_num = params["N"]
+            param_country = params["C"]
+                 
         if param_num is None:
             param_num = "+12345678"
         
@@ -31,20 +29,11 @@ class handler(BaseHTTPRequestHandler):
         self.send_header('Content-type','text/plain')
         self.end_headers()
         
-        length = int(self.headers.getheader('content-length'))
-        field_data = self.rfile.read(length)
-        
-        fields = urlparse.parse_qs(field_data)
-        
-        if fields["N"] is not None:
-            param_num = fields["N"]
-        else:
-            param_num = "+12345678"
-        
-        if fields["C"] is not None:
-            param_country = fields["C"]
-        else:
-            param_country = None
+        if self.rfile:
+            # print urlparse.parse_qs(self.rfile.read(int(self.headers['Content-Length'])))
+            params = dict(urlparse.parse_qs(self.rfile.read(int(self.headers['Content-Length']))))
+            param_num = params["N"]
+            param_country = params["C"]
         
         num = phonenumbers.parse(param_num, param_country)
         message = str(phonenumbers.is_valid_number(num))

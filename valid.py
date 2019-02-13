@@ -7,7 +7,8 @@ class handler(BaseHTTPRequestHandler):
         
         length = int(self.headers.getheader('content-length'))
         field_data = self.rfile.read(length)
-        print field_data
+        print (field_data)
+        print (str(field_data))
         fields = urlparse.parse_qs(field_data)
         print(*fields, sep = ", ")
         

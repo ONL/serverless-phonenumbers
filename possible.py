@@ -14,8 +14,7 @@ class handler(BaseHTTPRequestHandler):
             param_num = params.get("N","+1")
             param_country = params.get("C")
                  
-        if param_country == "xx":
-            param_country = None
+        if param_country == "None": param_country = None
         
         num = phonenumbers.parse(param_num, param_country)
         message = str(phonenumbers.is_possible_number(num))

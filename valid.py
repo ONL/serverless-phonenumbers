@@ -3,12 +3,11 @@ import phonenumbers
 
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):
+        length = int(self.headers.getheader('content-length'))
+        field_data = self.rfile.read(length)
         self.send_response(200)
         self.send_header('Content-type','text/plain')
         self.end_headers()
-        
-        length = int(self.headers.getheader('content-length'))
-        field_data = self.rfile.read(length)
         #fields = urlparse.parse_qs(field_data)
         
         #if fields["N"] is not None:

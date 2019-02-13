@@ -11,11 +11,8 @@ class handler(BaseHTTPRequestHandler):
         
         if "?" in self.path:
             params = dict(urllib.parse.parse_qsl(self.path.split("?")[1], True))
-            param_num = params["N"]
-            param_country = params["C"]
-                 
-        if param_num is None:
-            param_num = "+12345678"
+            param_num = params.get("N", "+12345678")
+            param_country = params.get("C")
         
         num = phonenumbers.parse(param_num, param_country)
         message = str(phonenumbers.is_valid_number(num))
@@ -32,8 +29,8 @@ class handler(BaseHTTPRequestHandler):
         if self.rfile:
             # print urlparse.parse_qs(self.rfile.read(int(self.headers['Content-Length'])))
             params = dict(urllib.parse.parse_qs(self.rfile.read(int(self.headers['Content-Length']))))
-            param_num = params["N"]
-            param_country = params["C"]
+            param_num = params.get("N", "+12345678")
+            param_country = params.get("C")
         
         num = phonenumbers.parse(param_num, param_country)
         message = str(phonenumbers.is_valid_number(num))

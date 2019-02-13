@@ -3,7 +3,9 @@
   "name": "phonenumbers",
   "builds": [{ "src": "*.py", "use": "@now/python", "config": { "maxLambdaSize": "15mb" }}],
   "routes": [
-    { "src": "/api/possible/([+]?[0-9]+)(/([A-Z]{2}))?", "dest":"/possible.py?N=$1&C=$3"},
-    { "src": "/api/valid/([+]?[0-9]+)(/([A-Z]{2}))?", "dest":"/valid.py?N=$1&C=$3"}
+    { "src": "/api/possible/([+]?[0-9]+)", "dest":"/possible.py?N=$1"},
+    { "src": "/api/possible/([+]?[0-9]+)/([A-Z]{2})", "dest":"/possible.py?N=$1&C=$2"},
+    { "src": "/api/valid/([+]?[0-9]+)", "dest":"/valid.py?N=$1"},
+    { "src": "/api/valid/([+]?[0-9]+)/([A-Z]{2})", "dest":"/valid.py?N=$1&C=$2"}
   ]
 }
